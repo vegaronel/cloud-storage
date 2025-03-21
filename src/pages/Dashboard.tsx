@@ -20,7 +20,7 @@ export default function Dashboard() {
   const [images, setImages] = useState<Image[]>([]);
   const [progress, setProgress] = useState<number>(0); // State for upload progress
   const [storageUsed, setStorageUsed] = useState<number>(0); // State for storage used (in bytes)
-  const [storageLimit, setStorageLimit] = useState<number>(50 * 1024 * 1024); // 50MB in bytes
+  const [storageLimit] = useState<number>(50 * 1024 * 1024); // 50MB in bytes
 
   useEffect(() => {
     const fetchUser = async () => {
