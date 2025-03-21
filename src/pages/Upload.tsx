@@ -25,7 +25,7 @@ export default function UploadFile() {
 
     const filePath = `uploads/${file.name}`; // Store inside the uploads folder
 
-    const { data, error } = await supabase.storage
+    const { error } = await supabase.storage
       .from("files") // Change "files" if your bucket name is different
       .upload(filePath, file, { upsert: true });
 

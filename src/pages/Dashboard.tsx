@@ -3,7 +3,7 @@ import { supabase } from "../config/supabase";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { UploadCloud, Folder } from "lucide-react";
+import { UploadCloud } from "lucide-react";
 
 // Define types
 type User = {
@@ -20,9 +20,7 @@ export default function Dashboard() {
   const [images, setImages] = useState<Image[]>([]);
   const [progress, setProgress] = useState<number>(0); // State for upload progress
   const [storageUsed, setStorageUsed] = useState<number>(0); // State for storage used (in bytes)
-  const [storageLimit, setStorageLimit] = useState<number>(
-    10 * 1024 * 1024 * 1024
-  ); // 10GB in bytes
+  const [storageLimit, setStorageLimit] = useState<number>(50 * 1024 * 1024); // 50MB in bytes
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -42,6 +40,12 @@ export default function Dashboard() {
 
     const file = e.target.files?.[0];
     if (!file) return;
+
+    // Check if the file size exceeds the remaining storage space
+    if (file.size + storageUsed > storageLimit) {
+      alert("Upload failed: Exceeds storage limit (50MB)");
+      return;
+    }
 
     const fileName = crypto.randomUUID(); // Use crypto.randomUUID()
 
