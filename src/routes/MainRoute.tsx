@@ -5,7 +5,6 @@ import LandingPage from "../pages/LandingPage";
 import Dashboard from "../pages/Dashboard";
 import DashboardLayout from "@/layouts/DashboardLayout";
 import MyFiles from "@/pages/MyFiles";
-import Upload from "@/pages/Upload";
 import ProtectedRoute from "@/context/ProtectedRoute"; // Import the ProtectedRoute component
 
 function MainRoute() {
@@ -23,7 +22,6 @@ function MainRoute() {
           <Route element={<DashboardLayout />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/my-files" element={<MyFiles />} />
-            <Route path="/upload" element={<Upload />} />
           </Route>
         </Route>
       </Routes>

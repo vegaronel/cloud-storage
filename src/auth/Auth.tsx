@@ -49,7 +49,6 @@ export default function Auth() {
           </div>
         ),
       });
-      navigate("/dashboard"); // Redirect to dashboard after sending the magic link
     }
     setLoading(false);
   };

@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { UploadCloud } from "lucide-react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 // Define types
 type User = {
@@ -156,7 +157,7 @@ export default function Dashboard() {
             </CardHeader>
             <CardContent className="flex flex-col gap-4">
               {images.length > 0 ? (
-                images.map((image) => (
+                images.slice(0, 3).map((image) => (
                   <div key={image.name} className="flex items-center gap-2">
                     <img
                       src={image.url} // Use the full public URL
@@ -167,7 +168,11 @@ export default function Dashboard() {
                   </div>
                 ))
               ) : (
-                <p className="text-sm text-muted-foreground">No recent files</p>
+                <div className="flex flex-col gap-4">
+                  <Skeleton className="p-4"></Skeleton>
+                  <Skeleton className="p-4"></Skeleton>
+                  <Skeleton className="p-4"></Skeleton>
+                </div>
               )}
             </CardContent>
           </Card>

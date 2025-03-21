@@ -1,11 +1,4 @@
-import {
-  Home,
-  Folder,
-  UploadCloud,
-  Share2,
-  Trash2,
-  Settings,
-} from "lucide-react";
+import { Home, Folder } from "lucide-react";
 
 import {
   Sidebar,
@@ -18,6 +11,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import Logout from "./logout";
+import { Link } from "react-router";
 
 // Updated menu items.
 const items = [
@@ -30,26 +24,6 @@ const items = [
     title: "My Files",
     url: "/my-files",
     icon: Folder,
-  },
-  {
-    title: "Upload",
-    url: "/upload",
-    icon: UploadCloud,
-  },
-  {
-    title: "Shared Files",
-    url: "/shared",
-    icon: Share2,
-  },
-  {
-    title: "Trash",
-    url: "/trash",
-    icon: Trash2,
-  },
-  {
-    title: "Settings",
-    url: "/settings",
-    icon: Settings,
   },
 ];
 
@@ -65,10 +39,10 @@ export function AppSidebar() {
                 {items.map((item) => (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton asChild>
-                      <a href={item.url}>
+                      <Link to={item.url}>
                         <item.icon />
                         <span>{item.title}</span>
-                      </a>
+                      </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
